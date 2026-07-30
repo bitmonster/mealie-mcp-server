@@ -1,0 +1,30 @@
+# Runtime credentials and local state
+.env
+.env.*
+!.env.example
+*.token
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# MCP runtime data
+.cache/
+downloads/
+imports/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

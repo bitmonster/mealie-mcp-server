@@ -1,0 +1,38 @@
+[project]
+name = "mealie-mcp-server"
+version = "0.1.0"
+description = "Security-conscious MCP server for self-hosted Mealie instances"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "bitmonster" }]
+keywords = ["mealie", "mcp", "model-context-protocol", "recipes", "self-hosted"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "mcp>=1.28.1,<2",
+  "pillow>=10,<13",
+  "pytesseract>=0.3.13,<0.4",
+  "get-chefkoch>=1.1.0,<2",
+]
+
+[dependency-groups]
+dev = [
+  "pip-audit>=2.9,<3",
+  "ruff>=0.12,<1",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.uv]
+package = false
