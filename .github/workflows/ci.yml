@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --frozen --all-groups
+      - name: Compile
+        run: uv run python -m compileall -q mealie_server.py tests
+      - name: Static analysis
+        run: uv run ruff check mealie_server.py tests
+      - name: Unit tests
+        run: uv run python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Dependency audit
+        if: matrix.python-version == '3.13'
+        run: uv run pip-audit --skip-editable
