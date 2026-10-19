@@ -16,7 +16,7 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-  "mcp>=1.28.1,<2",
+  "mcp>=1.30.0,<2",
   "pillow>=10,<13",
   "pytesseract>=0.3.13,<0.4",
   "get-chefkoch>=1.1.0,<2",
